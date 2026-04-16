@@ -141,4 +141,4 @@ docker exec -it joyfay-strongswan ipsec statusall
 
 ## 相关文章
 
-详细部署说明请参考博客文章：[Docker 搭建 IKEv2/IPSec EAP VPN 服务端](https://blog.joylau.cn/Docker-IKEv2-VPN/)
+详细部署说明请参考博客文章：[Docker 搭建 IKEv2/IPSec EAP VPN 服务端](https://blog.joylau.cn/2026/04/16/Docker-IKEv2-VPN/)
