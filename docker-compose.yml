@@ -1,0 +1,27 @@
+version: "3"
+services:
+  strongswan:
+    image: 192.168.1.231:6117/joyfay-strongswan:latest
+    container_name: joyfay-strongswan
+    restart: unless-stopped
+    privileged: true
+    # 或者使用 capabilities 替代 privileged（更安全）
+    # cap_add:
+    #   - NET_ADMIN
+    #   - SYS_MODULE
+    ports:
+      - "500:500/udp"
+      - "4500:4500/udp"
+    volumes:
+      # 配置文件挂载
+      - ./config/ipsec.conf:/etc/ipsec.conf:ro
+      - ./config/ipsec.secrets:/etc/ipsec.secrets:ro
+      # 证书目录挂载
+      - ./config/certs:/etc/ipsec.d:ro
+      # 内核模块（可选，某些环境需要）
+      - /lib/modules:/lib/modules:ro
+    sysctls:
+      # 启用 IP 转发
+      - net.ipv4.ip_forward=1
+    environment:
+      - TZ=Asia/Shanghai
